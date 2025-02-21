@@ -6,6 +6,34 @@ This repository contains solutions for __ME5413 Homework 1: Perception__, which 
 - __Task 2:__ Trajectory prediction using a constant velocity model and evaluation metrics such as ADE (Average Displacement Error) and FDE (Final Displacement Error).
 - __Task 3:__ Please review [Task3_README.md](./task3_bonus/README.md)
 
+## Note on `pytorch_model.bin` File
+
+Due to persistent issues with Git LFS when uploading the `pytorch_model.bin` file, it has not been included directly in this repository.
+
+Instead, you can download the `pytorch_model.bin` file from OneDrive using the link below:
+
+https://1drv.ms/u/c/c979dcfcaa816b41/Eb1hWEtsTsNChBlHtt5rJuMB2Q_KN1VVjDJs6QcD25EMHw?e=cmA3Nm
+
+### How to use the file
+
+1. Download the pytorch_model.bin file from the provided OneDrive link.
+2. Place the file in the following directory:
+```
+.
+├── task1_tracking
+│   └── detr-resnet-50
+│       └── pytorch_model.bin
+└── task3_bonus
+    └── src
+        └── task3_tracker
+            └── src
+                └── detr-resnet-50
+                    └── pytorch_model.bin
+```
+3. Ensure the directory structure matches the project before running any code that depends on this file.
+
+If you encounter any issues while downloading or using the file, feel free to open an issue in this repository.
+
 ## Folder Structure
 
 ```
