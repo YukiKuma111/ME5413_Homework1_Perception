@@ -1,0 +1,25 @@
+<launch>
+    <!-- Use simulation time (from rosbag) -->
+    <param name="use_sim_time" value="true" />
+
+    <!-- Define the sequence number parameter that can be passed in, default value is 2 -->
+    <arg name="seq_num" default="2" />
+
+    <!-- Launch RViz and load the configuration -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find task3_tracker)/../../data/ziyue_rviz_config.rviz" output="screen" />
+
+    <!-- Launch the Object Detection Publisher script -->
+    <node pkg="task3_tracker" type="object_detection_publisher.py" name="object_detection_publisher" output="screen" cwd="node">
+        <param name="seq_num" value="$(arg seq_num)"/>
+    </node>
+
+    <!-- Launch the BBox Visualizer script -->
+    <node pkg="task3_tracker" type="bbox_visualizer.py" name="bbox_visualizer" output="screen" cwd="node">
+    </node>
+
+    <!-- Play the corresponding rosbag file, dynamically selecting the bag file based on the passed seq_num -->
+    <node pkg="rosbag" type="play" name="rosbag_play"
+          args="$(find task3_tracker)/../../rosbags/seq$(arg seq_num).bag --pause --clock" output="screen">
+        <param name="use_sim_time" value="true"/>
+    </node>
+</launch>
